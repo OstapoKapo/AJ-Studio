@@ -8,6 +8,19 @@
   box-sizing: border-box;
 }
 
+
+input[type=text]:focus {
+  border: 1px solid inherit;
+  outline: none !important;
+}
+
+select:focus{
+  border: 1px solid inherit;
+  outline: none !important;
+}
+
+/* Start my mixins */
+
 .center{
   display: flex;
   align-items: center;
@@ -20,12 +33,73 @@
   @apply rounded-[25px] p-[10px] font-semibold;
 }
 
-input[type=text]:focus {
-  border: 1px solid inherit;
-  outline: none !important;
+.row{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: min-content;
 }
 
-select:focus{
-  border: 1px solid inherit;
-  outline: none !important;
+/* End my mixins */
+/* Start swiper classes */
+
+.swiper{
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
 }
+
+.swiper-container{
+  border-radius: 24px;
+  background-color: #FFE2B5;
+}
+
+.swiper__arrowGroup{
+  position: relative;
+  top: -55%;
+}
+
+.pagination-container{
+  position: relative;
+  top: -50%;
+  padding: 10px;
+  width: 100%;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pagination__item{
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: inherit;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+.pagination__item:hover{
+  transition: 0.4s;
+  background-color: #FDC20B;
+}
+
+.pagination__item_active{
+  background-color: #FDC20B;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+.pagination__interval{
+  width: 50%;
+  height: 5px;
+  background-color: #1F3445;
+  border-radius: 20px;
+}
+
+.pagination__interval__item{
+  width: 66px;
+  height: 5px;
+  border-radius: 20px;
+  background-color: #C3B396;
+}
+/* End swiper classes */
