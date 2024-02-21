@@ -90,14 +90,14 @@ select:focus{
 }
 
 .pagination__interval{
-  width: 50%;
+ transition: 0.2s;
   height: 5px;
   background-color: #1F3445;
   border-radius: 20px;
 }
 
 .pagination__interval__item{
-  width: 66px;
+  width: 65px;
   height: 5px;
   border-radius: 20px;
   background-color: #C3B396;
