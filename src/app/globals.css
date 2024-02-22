@@ -28,6 +28,7 @@ select:focus{
 }
 
 .block{
+  cursor: pointer;
   background-color: #E7E9EB;
   color: #11293B;
   @apply rounded-[25px] p-[10px] font-semibold;
@@ -103,3 +104,22 @@ select:focus{
   background-color: #C3B396;
 }
 /* End swiper classes */
+/* Start goods classes */
+
+.good__colourItem{
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #fff;
+  transition: 0.4s;
+}
+.good__colourItem:hover{
+  transition: 0.4s;
+  border: 1px solid #000;
+}
+.good__colourItem_active{
+  border: 1px solid #000;
+}
+
+/* End goods classes */
