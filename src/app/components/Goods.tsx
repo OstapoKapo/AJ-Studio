@@ -1,25 +1,37 @@
 'use client'
 import { useEffect, useState } from 'react';
 import '../globals.css';
+import axios from 'axios';
+import { Product } from '../../../types';
 
-export default function Goods() {
+const Goods: React.FC<Product> = ({name, price, img, discount, events, _id}) => {
 
   const bgColors: Array<string> = ['#7BE498', '#F5E6FF', '#F7C29B', '#68EAEB'];
-  const [randomColor, setRandomColor] = useState<string>('')
+  const [randomColor, setRandomColor] = useState<string>('');
 
-   useEffect(()=>{
+  useEffect(()=>{
     const random = Math.floor(Math.random() * bgColors.length);
     setRandomColor(bgColors[random]);
-   },[])
+  },[]);
 
+
+
+   
   return (
     <div className="h-min w-[245px] mx-[10px] my-[20px] flex-wrap ">
        <div className='w-full h-[280px] rounded-3xl' style={{backgroundColor: randomColor}} >
-          <img className='w-full h-full' src="/nike_airmax_blue.png" alt="shoe" />
+        <img className='w-full h-full' src={'/' + img} alt="shoe" />
        </div>
        <div className='mt-[20px] w-full h-min px-[15px]'>
-         <h1 className='font-bold text-[20px] w-full'>Nike Air</h1>
-         <div className='font-medium text-[17px]'>289$</div>
+         <h1 className='font-bold text-[20px] w-full'>{name}</h1>
+         {discount.state ? (
+          <div className='flex'>
+            <div className='font-medium text-[17px] text-red-600'>{Math.round((price-((price*discount.percentages)/100)))+'$'}</div>
+            <s className='font-medium text-[17px] ml-[10px]'>{price+'$'}</s>
+          </div>
+         ) : (
+          <div className='font-medium text-[17px]'>{price+'$'}</div>
+         )}
          <div className='row mt-[10px]'>
             <div className='w-[50%] h-full'>
                 <div className='center rounded-[25px] p-[10px] h-[25px] text-[15px] w-[70px] text-cyan-700 font-semibold ' style={{backgroundColor: '#CFE2FD'}}>Colours</div>
@@ -47,3 +59,5 @@ export default function Goods() {
     </div>
   );
 }
+
+export default Goods;
