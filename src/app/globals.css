@@ -121,5 +121,22 @@ select:focus{
 .good__colourItem_active{
   border: 1px solid #000;
 }
-
+.goodEvent{
+  color: #fff;
+  width: 70px;
+  height: 30px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.goodEvent_hot{
+  background-color: #0077FF;
+}
+.goodEvent_new{
+  background-color: #E76300;
+}
 /* End goods classes */
+.currency{
+  position: absolute;
+  top: 3.5%;
+  right: 7%;
+}

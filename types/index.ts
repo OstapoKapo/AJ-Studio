@@ -10,9 +10,11 @@ export interface Product {
         new: boolean,
         hot: boolean
     },
-    _id: string
+    _id: string,
+    currency: any,
+    setCurrency: any,
 }
-export interface Main {
+export interface Currency {
     currency: any,
     setCurrency: any,
 }

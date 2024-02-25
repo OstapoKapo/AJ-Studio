@@ -42,19 +42,19 @@ export default function Header() {
                 <div className='w-[30px] h-[30px] ml-[5px] bg-red-500 center text-white rounded-full'>1</div>
             </div>
 
-            <div className='block center w-[70px] h-[30px] ml-[50px]'>
+            <div className='block center w-[70px] h-[30px] ml-[50px] mr-[100px]'>
                 <select name="language" id="language" className='bg-inherit mt-[-2px] onFocus'>
                     <option value="ENG">ENG</option>
                     <option value="UA">UA</option>
                 </select>
             </div>
 
-            <div className='block center w-[70px] h-[30px] ml-[10px]'>
+            {/* <div className='block center w-[70px] h-[30px] ml-[10px]'>
                 <select name="language" id="language" className='bg-inherit mt-[-2px] '>
                     <option value="USD">USD</option>
                     <option value="UAH">UAH</option>
                 </select>
-            </div>
+            </div> */}
           </div>
         </header>
     );

@@ -4,33 +4,46 @@ import '../globals.css';
 import axios from 'axios';
 import { Product } from '../../../types';
 
-const Goods: React.FC<Product> = ({name, price, img, discount, events, _id}) => {
+const Goods: React.FC<Product> = ({name, price, img, discount, events, _id, currency, setCurrency}) => {
 
   const bgColors: Array<string> = ['#7BE498', '#F5E6FF', '#F7C29B', '#68EAEB'];
+  const [UAHCurrency, setUAHCurrency] = useState<number>(38);
   const [randomColor, setRandomColor] = useState<string>('');
 
   useEffect(()=>{
     const random = Math.floor(Math.random() * bgColors.length);
     setRandomColor(bgColors[random]);
+
+   const posthandle = async () => {
+    await axios.get('https://open.er-api.com/v6/latest/usd', {})
+      .then((response) => {
+        setUAHCurrency(response.data.rates.UAH)
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+   }
+   posthandle();
   },[]);
-
-
-
    
   return (
     <div className="h-min w-[245px] mx-[10px] my-[20px] flex-wrap ">
        <div className='w-full h-[280px] rounded-3xl' style={{backgroundColor: randomColor}} >
+        <div className='flex'>
+          <div className='goodEvent center goodEvent_hot z-[10]' style={{display: events.hot ? 'flex' : 'none'}}>Hot</div>
+          <div className='goodEvent center goodEvent_new ' style={{display: events.new ? 'flex' : 'none', marginLeft: events.hot ? '-15px' : '0px'}}>New</div>
+        </div>
         <img className='w-full h-full' src={'/' + img} alt="shoe" />
        </div>
        <div className='mt-[20px] w-full h-min px-[15px]'>
          <h1 className='font-bold text-[20px] w-full'>{name}</h1>
          {discount.state ? (
           <div className='flex'>
-            <div className='font-medium text-[17px] text-red-600'>{Math.round((price-((price*discount.percentages)/100)))+'$'}</div>
-            <s className='font-medium text-[17px] ml-[10px]'>{price+'$'}</s>
+            <div className='font-medium text-[17px] text-red-600'>{currency === 'USD' ? Math.round((price-((price*discount.percentages)/100)))+'$' : Math.round(UAHCurrency*(price-((price*discount.percentages)/100)))+'₴'}</div>
+            <s className='font-medium text-[17px] ml-[10px]'>{currency === 'USD' ? price+'$' :  Math.round(price*UAHCurrency)+'₴'}</s>
           </div>
          ) : (
-          <div className='font-medium text-[17px]'>{price+'$'}</div>
+          <div className='font-medium text-[17px]'>{currency === 'USD' ? price+'$' : Math.round(price*UAHCurrency)+'₴'}</div>
          )}
          <div className='row mt-[10px]'>
             <div className='w-[50%] h-full'>
